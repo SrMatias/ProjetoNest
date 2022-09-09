@@ -1,0 +1,17 @@
+import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { ValidationTypes } from 'class-validator';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+process.env.TZ = '-3:00'
+
+app.useGlobalPipes(new ValidationPipe())
+
+app.enableCors()
+
+  await app.listen(3000);
+}
+bootstrap();
