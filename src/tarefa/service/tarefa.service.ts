@@ -13,7 +13,11 @@ constructor(
 
 
 async findAll(): Promise<Tarefa[]>{
-return this.tarefaRepository.find()
+return this.tarefaRepository.find({
+    relations:{
+        categoria: true
+    }
+})
 
 }
 
@@ -21,6 +25,9 @@ async findById(id: number): Promise<Tarefa>{//Retorna uma promisse unica
     let tarefa = await this.tarefaRepository.findOne({//Encontra um  na tarefa repository
         where: {
             id//onde o Id seja esse
+        },
+        relations:{
+            categoria: true
         }
     })
 
@@ -34,6 +41,9 @@ async findByNome (nome :String): Promise<Tarefa[]>{
 return this.tarefaRepository.find({
     where: {
         nome: ILike(`%${nome}%`)
+    },
+    relations:{
+        categoria: true
     }
 })
     
