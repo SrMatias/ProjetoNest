@@ -12,10 +12,10 @@ export class TarefaController{
     }
 
    
-    @Get('/:id')//Passar o caminho de tarefa/id
+    @Get('/:id')
     @HttpCode(HttpStatus.OK)
-    findById(@Param('id', ParseIntPipe) id: number): Promise<Tarefa>{//Esperando um Id, que vai ser do tipo inteiro
-        return this.service.findById(id)//Buscando um Id
+    findById(@Param('id', ParseIntPipe) id: number): Promise<Tarefa>{
+         return this.service.findById(id)
     }
     
 @Get('/nome/:nome')
@@ -31,7 +31,7 @@ create(@Body()tarefa : Tarefa): Promise<Tarefa>{
 }
 
 @Put()
-@HttpCode(HttpStatus.CREATED)
+@HttpCode(HttpStatus.OK)
 update(@Body()tarefa : Tarefa): Promise<Tarefa>{
     return this.service.update(tarefa)
 
@@ -45,4 +45,8 @@ return this.service.delete(id)
 
 }
 
+}
+
+function ApiTags(arg0: string) {
+    throw new Error("Function not implemented.");
 }
