@@ -9,6 +9,7 @@ import { TarefaModule } from './tarefa/modules/tarefa.module';
 @Module({
   imports: [
     /*
+    
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -21,7 +22,7 @@ import { TarefaModule } from './tarefa/modules/tarefa.module';
 
     }),
 */
-    TypeOrmModule.forRoot({
+   TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
       logging: false,
@@ -32,6 +33,7 @@ import { TarefaModule } from './tarefa/modules/tarefa.module';
       synchronize:true,
       autoLoadEntities:true
     }),
+    
     TarefaModule,
     CategoriaModule
   ],
